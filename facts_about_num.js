@@ -1,17 +1,9 @@
 const url = `http://numbersapi.com/42/`;
 
-function facts_about_num(num) {
-  return axios.get(`http://numbersapi.com/${num}/`);
+async function facts_about_num(num) {
+  res = await axios.get(`http://numbersapi.com/${num}/`).then((res) => {
+    console.log(res.data);
+  });
 }
 
-facts_about_num(42)
-  .then((res) => {
-    console.log(res.data);
-    return facts_about_num(66);
-  })
-  .then((res) => {
-    console.log(res.data);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+facts_about_num(42);
